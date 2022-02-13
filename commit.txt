@@ -13,3 +13,19 @@ push an existing repository from the command line
 git remote add origin https://github.com/hassanmoid/Neural_Network_Visualization.git
 git branch -M main
 git push -u origin main
+
+
+
+##Creating a new branch and adding new code to it, pushing to the main branch
+git checkout -b sample_t1
+git add commit.txt
+git commit -a -m "first branch commit"
+git push origin sample_t1
+git checkout main
+git pull origin main
+git merge sample_t1
+git push origin master
+
+##deleting a branch
+git branch -D sample_t1
+git push origin --delete sample_t1 or git push origin :sample_t1
