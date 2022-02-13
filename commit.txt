@@ -24,7 +24,7 @@ git push origin sample_t1
 git checkout main
 git pull origin main
 git merge sample_t1
-git push origin master
+git push origin main
 
 ##deleting a branch
 git branch -D sample_t1
