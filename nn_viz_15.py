@@ -45,7 +45,9 @@ def main():
     p = find_between_layer_gap(p)
     p = find_between_node_gap(p)
     p = find_error_image_position(p)
-    print("error image position: ", p["error_image"])
+    #print("error image position: ", p["error_image"])
+    add_input_image(fig, p)
+    save_nn_viz(fig, postfix="15_input_random")
 
 
 def construct_parameters():
@@ -148,6 +150,24 @@ def find_error_image_position(p):
         - p["error_image"]["width"] / 2
     )
     return p
+
+def add_input_image(fig, p):
+    absolute_pos = (
+        p["gap"]["left_border"],
+        p["input"]["image"]["bottom"],
+        p["input"]["image"]["width"],
+        p["input"]["image"]["height"])
+    scaled_pos = (
+        absolute_pos[0] / p["figure"]["width"],
+        absolute_pos[1] / p["figure"]["height"],
+        absolute_pos[2] / p["figure"]["width"],
+        absolute_pos[3] / p["figure"]["height"])
+    ax_input = fig.add_axes(scaled_pos)
+    fill_patch = np.random.sample(size = (
+        p["input"]["n_rows"],
+        p["input"]["n_cols"]
+    ))
+    ax_input.imshow(fill_patch, cmap="inferno")
 
 def save_nn_viz(fig, postfix="0"):
     base_name = "nn_viz_"
