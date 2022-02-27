@@ -48,7 +48,7 @@ def main():
     #print("error image position: ", p["error_image"])
     add_input_image(fig, p)
     add_node_images(fig, p)
-    save_nn_viz(fig, postfix="20_layer_0_node_0")
+    save_nn_viz(fig, postfix="20_layer_0")
 
 
 def construct_parameters():
