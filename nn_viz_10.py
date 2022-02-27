@@ -116,7 +116,10 @@ def save_nn_viz(fig, postfix="0"):
 def find_node_image_size(p):
     total_space_to_fill = (p["figure"]["height"] - p["gap"]["bottom_border"] - p["gap"]["top_border"])
     height_constrained_by_height = (total_space_to_fill / (p["network"]["max_nodes"] + (p["network"]["max_nodes"] - 1) * p["gap"]["between_node_scale"]))
-    print("height constrained by height:", height_constrained_by_height)
+    total_space_to_fill = (p["figure"]["width"] - p["gap"]["left_border"] - p["gap"]["left_border"] - 2 * p["input"]["image"]["width"])
+    width_constrained_by_width = (total_space_to_fill / (p["network"]["n_layers"] + (p["network"]["n_layers"] + 1) * p["gap"]["between_layer_scale"]))
+    height_constrained_by_width = (width_constrained_by_width/p["input"]["aspect_ratio"])
+    print("height constrained by width:", height_constrained_by_width)
     return p
 
 
